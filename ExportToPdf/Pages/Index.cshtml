@@ -1,10 +1,33 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div dir="rtl" class="mt-4">
+    <a href="?handler=DownloadPdf" class="btn btn-primary mb-3">
+        <i class="bi bi-file-earmark-pdf"></i> تصدير إلى PDF
+    </a>
+    <table class="table text-right">
+        <thead>
+            <tr>
+                <th>رقم السجل</th>
+                <th>رقم التصنيف</th>
+                <th>عنوان السجل</th>
+                <th>نوع السجل</th>
+                <th>وقت الإنشاء</th>
+            </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SearchModels)
+        {
+            <tr>
+                <td>@item.RecordNo</td>
+                <td>@item.CalssificationNo</td>
+                <td>@item.RecordTitle</td>
+                <td>@item.RecordType</td>
+                <td>@item.CreationTime.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+    </table>
 </div>

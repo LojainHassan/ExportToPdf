@@ -1,7 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using QuestPDF.Infrastructure;
 
+// Set QuestPDF license
+QuestPDF.Settings.License = LicenseType.Community;
+
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<ExportToPdf.Services.SearchService>();
 
 var app = builder.Build();
 
